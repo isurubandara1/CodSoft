@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(90.0),
         child: AppBar(
           backgroundColor: Colors.blue,
           title: Padding(
@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                 icon: Icon(
                   Icons.category,
                   size: 40,
+                  color: Color.fromARGB(255, 21, 83, 23),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(CategoryScreen.routeName);
@@ -49,6 +50,7 @@ class HomeScreen extends StatelessWidget {
                 icon: Icon(
                   Icons.settings,
                   size: 40,
+                  color: Color.fromARGB(255, 21, 83, 23),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed(BudgetScreen.routeName);
@@ -97,27 +99,62 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: TransactionList(),
           ),
-        ],
-      ),
-      floatingActionButton: ElevatedButton(
-        child: Text(
-          "Add \nTransactions",
-          style: TextStyle(fontSize: 12),
-          textAlign: TextAlign.center,
-        ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(AddTransactionScreen.routeName);
-        },
-        style: ElevatedButton.styleFrom(
-          elevation: 15,
-          primary: Colors.blue,
-          onPrimary: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-            side: BorderSide(color: Colors.grey, width: 2),
+          SizedBox(
+            height: 20,
           ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  child: Text(
+                    "Add \nMonthly Budget",
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(BudgetScreen.routeName);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 15,
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      side: BorderSide(color: Colors.grey, width: 2),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                ),
+                ElevatedButton(
+                  child: Text(
+                    "Add \nTransactions",
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushNamed(AddTransactionScreen.routeName);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 15,
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      side: BorderSide(color: Colors.grey, width: 2),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+        ],
       ),
     );
   }

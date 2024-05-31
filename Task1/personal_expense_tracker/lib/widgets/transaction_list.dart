@@ -27,7 +27,10 @@ class TransactionList extends StatelessWidget {
               children: [
                 Text(DateFormat.yMMMd().format(tx.date)),
                 IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.brown,
+                  ),
                   onPressed: () {
                     Provider.of<TransactionProvider>(context, listen: false)
                         .deleteTransaction(tx.id);
