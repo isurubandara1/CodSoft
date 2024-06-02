@@ -32,7 +32,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
         title: const Padding(
           padding: const EdgeInsets.only(top: 8),
           child: Text(
-            'Transactions by Category',
+            'Add Your Budget',
             style: TextStyle(
               color: Colors.white,
               fontSize: 22,
@@ -70,6 +70,16 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+              child: Image.asset(
+                'assets/images/Budget.png',
+                height: 300,
+                width: 500,
               ),
             ),
           ],
