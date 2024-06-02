@@ -27,26 +27,23 @@ class _BudgetScreenState extends State<BudgetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90.0),
-        child: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              'Transactions by Category',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            'Transactions by Category',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          leading: const Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: BackButton(
-              color: Colors.white,
-            ),
+        ),
+        leading: const Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: BackButton(
+            color: Colors.white,
           ),
         ),
       ),

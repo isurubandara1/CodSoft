@@ -124,7 +124,6 @@ class HomeScreen extends StatelessWidget {
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
@@ -135,16 +134,25 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(AddTransactionScreen.routeName);
-                  },
+                  onPressed: transactionProvider.monthlyBudget == 0.0
+                      ? () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Firstly enter Monthly Budget'),
+                            ),
+                          );
+                        }
+                      : () {
+                          Navigator.of(context)
+                              .pushNamed(AddTransactionScreen.routeName);
+                        },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    primary: transactionProvider.monthlyBudget == 0.0
+                        ? Colors.grey
+                        : Colors.blue,
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
