@@ -22,28 +22,60 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transactions by Category'),
+        backgroundColor: Colors.blue,
+        title: const Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            'Transactions by Category',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        leading: const Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: BackButton(
+            color: Colors.white,
+          ),
+        ),
       ),
-      body: Column(
-        children: [
-          DropdownButton<Category>(
-            value: _selectedCategory,
-            onChanged: (Category? newValue) {
-              setState(() {
-                _selectedCategory = newValue!;
-              });
-            },
-            items: Category.values.map((Category category) {
-              return DropdownMenuItem<Category>(
-                value: category,
-                child: Text(category.toString().split('.').last),
-              );
-            }).toList(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 30,
+              ),
+              DropdownButton<Category>(
+                value: _selectedCategory,
+                onChanged: (Category? newValue) {
+                  setState(() {
+                    _selectedCategory = newValue!;
+                  });
+                },
+                items: Category.values.map((Category category) {
+                  return DropdownMenuItem<Category>(
+                    value: category,
+                    child: Text(
+                      category.toString().split('.').last,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+              Expanded(
+                child: TransactionList(transactions: transactions),
+              ),
+            ],
           ),
-          Expanded(
-            child: TransactionList(transactions: transactions),
-          ),
-        ],
+        ),
       ),
     );
   }

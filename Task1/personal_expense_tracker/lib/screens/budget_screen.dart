@@ -64,12 +64,10 @@ class _BudgetScreenState extends State<BudgetScreen> {
               onPressed: _submitBudget,
               child: Text('Set Budget'),
               style: ElevatedButton.styleFrom(
-                elevation: 15,
-                primary: Colors.brown,
+                primary: Colors.blue,
                 onPrimary: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                  side: BorderSide(color: Colors.green, width: 2),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               ),
