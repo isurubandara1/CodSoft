@@ -97,7 +97,10 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: TransactionList(),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: TransactionList(),
+            ),
           ),
           SizedBox(
             height: 20,
@@ -117,12 +120,11 @@ class HomeScreen extends StatelessWidget {
                     Navigator.of(context).pushNamed(BudgetScreen.routeName);
                   },
                   style: ElevatedButton.styleFrom(
-                    elevation: 15,
-                    primary: Colors.brown,
+                    primary: Colors.blue,
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      side: BorderSide(color: Colors.green, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
@@ -138,12 +140,11 @@ class HomeScreen extends StatelessWidget {
                         .pushNamed(AddTransactionScreen.routeName);
                   },
                   style: ElevatedButton.styleFrom(
-                    elevation: 15,
-                    primary: Colors.brown,
+                    primary: Colors.blue,
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      side: BorderSide(color: Colors.green, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
