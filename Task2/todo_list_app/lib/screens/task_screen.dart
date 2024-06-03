@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/task_data.dart';
 import '../widgets/task_list.dart';
+import 'edit_task_screen.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String newTaskTitle;
+    String newTaskTitle = '';
 
     return Scaffold(
       appBar: AppBar(
@@ -39,9 +40,11 @@ class TaskScreen extends StatelessWidget {
                         SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
-                            Provider.of<TaskData>(context, listen: false)
-                                .addTask(newTaskTitle);
-                            Navigator.pop(context);
+                            if (newTaskTitle.isNotEmpty) {
+                              Provider.of<TaskData>(context, listen: false)
+                                  .addTask(newTaskTitle);
+                              Navigator.pop(context);
+                            }
                           },
                           child: Text('Add Task'),
                         ),
