@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/task_data.dart';
-import 'task_tile.dart';
-import '../screens/edit_task_screen.dart'; // Import the EditTaskScreen
+import 'package:todo_list_app/providers/task_data.dart';
+import 'package:todo_list_app/widgets/task_tile.dart';
+
+import '../screens/edit_task_screen.dart';
 
 class TaskList extends StatelessWidget {
   @override
@@ -12,24 +13,33 @@ class TaskList extends StatelessWidget {
         return ListView.builder(
           itemBuilder: (context, index) {
             final task = taskData.tasks[index];
-            return TaskTile(
-              taskTitle: task.title,
-              isChecked: task.isCompleted,
-              checkboxCallback: (checkboxState) {
-                taskData.updateTask(task);
-              },
-              longPressCallback: () {
-                taskData.deleteTask(task);
-              },
-              editCallback: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => EditTaskScreen(
-                    task: task,
-                    taskIndex: index,
+            return Column(
+              children: [
+                TaskTile(
+                  taskTitle: task.title,
+                  isChecked: task.isCompleted,
+                  checkboxCallback: (checkboxState) {
+                    taskData.updateTask(task);
+                  },
+                  longPressCallback: () {
+                    taskData.deleteTask(task);
+                  },
+                  editCallback: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => EditTaskScreen(
+                        task: task,
+                        taskIndex: index,
+                      ),
+                    );
+                  },
+                ),
+                if (index < taskData.tasks.length - 1)
+                  Container(
+                    height: 10,
+                    color: Colors.grey[200],
                   ),
-                );
-              },
+              ],
             );
           },
           itemCount: taskData.tasks.length,

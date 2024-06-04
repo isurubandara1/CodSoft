@@ -36,7 +36,15 @@ class EditTaskScreen extends StatelessWidget {
                 Navigator.pop(context);
               }
             },
-            child: Text('Save Changes'),
+            child: Text(
+              'Save Changes',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange,
+              elevation: 5,
+            ),
           ),
         ],
       ),
