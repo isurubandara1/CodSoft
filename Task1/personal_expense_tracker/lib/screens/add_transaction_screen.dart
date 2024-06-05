@@ -111,7 +111,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
-                    side: BorderSide(width: 2),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),

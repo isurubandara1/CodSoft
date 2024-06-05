@@ -23,7 +23,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.home),
+            leading: Icon(Icons.category),
             title: Text('Categories'),
             onTap: () {
               Navigator.of(context).pushNamed(CategoryScreen.routeName);

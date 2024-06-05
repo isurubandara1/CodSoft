@@ -41,41 +41,38 @@ class _CategoryScreenState extends State<CategoryScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              DropdownButton<Category>(
-                value: _selectedCategory,
-                onChanged: (Category? newValue) {
-                  setState(() {
-                    _selectedCategory = newValue!;
-                  });
-                },
-                items: Category.values.map((Category category) {
-                  return DropdownMenuItem<Category>(
-                    value: category,
-                    child: Text(
-                      category.toString().split('.').last,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                      ),
+      body: Column(
+        children: [
+          SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: DropdownButton<Category>(
+              value: _selectedCategory,
+              onChanged: (Category? newValue) {
+                setState(() {
+                  _selectedCategory = newValue!;
+                });
+              },
+              items: Category.values.map((Category category) {
+                return DropdownMenuItem<Category>(
+                  value: category,
+                  child: Text(
+                    category.toString().split('.').last,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
                     ),
-                  );
-                }).toList(),
-              ),
-              Expanded(
-                child: TransactionList(transactions: transactions),
-              ),
-            ],
+                  ),
+                );
+              }).toList(),
+            ),
           ),
-        ),
+          SizedBox(height: 10),
+          Expanded(
+            child: TransactionList(transactions: transactions),
+          ),
+        ],
       ),
     );
   }

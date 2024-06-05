@@ -48,7 +48,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

@@ -26,10 +26,10 @@ class HomeScreen extends StatelessWidget {
           title: Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Text(
-              'Personal Expense \nTracker',
+              'Personal Expense Tracker',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -56,12 +56,12 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Card(
-            color: Colors.amber,
             margin: EdgeInsets.all(20),
             child: Padding(
               padding:
                   EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Monthly Budget: \$${transactionProvider.monthlyBudget.toStringAsFixed(2)}',
