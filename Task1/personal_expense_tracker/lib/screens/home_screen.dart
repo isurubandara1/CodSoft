@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/transaction_provider.dart';
 import '../widgets/transaction_list.dart';
+import '../widgets/drawer_widget.dart';
 import 'add_transaction_screen.dart';
 import 'category_screen.dart';
 import 'budget_screen.dart';
+import '../providers/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final transactionProvider = Provider.of<TransactionProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     // Calculate remaining budget
     double remainingBudget =
@@ -57,9 +60,25 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: IconButton(
+                icon: Icon(
+                  themeProvider.themeMode == ThemeMode.light
+                      ? Icons.dark_mode
+                      : Icons.light_mode,
+                  size: 40,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  themeProvider.toggleTheme();
+                },
+              ),
+            ),
           ],
         ),
       ),
+      drawer: AppDrawer(),
       body: Column(
         children: [
           Card(
@@ -124,6 +143,7 @@ class HomeScreen extends StatelessWidget {
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
@@ -153,6 +173,7 @@ class HomeScreen extends StatelessWidget {
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
+                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
