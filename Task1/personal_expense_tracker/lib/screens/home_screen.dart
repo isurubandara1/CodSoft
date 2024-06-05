@@ -38,19 +38,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10),
               child: IconButton(
                 icon: Icon(
-                  Icons.category,
-                  size: 40,
-                  color: Color.fromARGB(255, 21, 83, 23),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(CategoryScreen.routeName);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: IconButton(
-                icon: Icon(
                   themeProvider.themeMode == ThemeMode.light
                       ? Icons.dark_mode
                       : Icons.light_mode,

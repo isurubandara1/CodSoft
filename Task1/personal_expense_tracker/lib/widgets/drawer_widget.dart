@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../screens/category_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -23,9 +24,9 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.home),
-            title: Text('Cat'),
+            title: Text('Categories'),
             onTap: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed(CategoryScreen.routeName);
             },
           ),
           ListTile(
