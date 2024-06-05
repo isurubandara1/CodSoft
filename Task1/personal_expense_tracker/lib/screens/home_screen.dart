@@ -51,19 +51,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10),
               child: IconButton(
                 icon: Icon(
-                  Icons.settings,
-                  size: 40,
-                  color: Color.fromARGB(255, 21, 83, 23),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(BudgetScreen.routeName);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: IconButton(
-                icon: Icon(
                   themeProvider.themeMode == ThemeMode.light
                       ? Icons.dark_mode
                       : Icons.light_mode,
@@ -143,7 +130,6 @@ class HomeScreen extends StatelessWidget {
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
@@ -173,7 +159,6 @@ class HomeScreen extends StatelessWidget {
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(width: 2),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),

@@ -22,6 +22,13 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Cat'),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          ListTile(
             leading: Icon(themeProvider.themeMode == ThemeMode.light
                 ? Icons.dark_mode
                 : Icons.light_mode),
