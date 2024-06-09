@@ -58,8 +58,8 @@ class TaskScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.share),
-              title: Text('Share App'),
+              leading: const Icon(Icons.share),
+              title: const Text('Share App'),
               onTap: () {
                 // Navigate to the home screen
               },
