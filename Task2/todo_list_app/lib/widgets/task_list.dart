@@ -15,6 +15,9 @@ class TaskList extends StatelessWidget {
             final task = taskData.tasks[index];
             return Column(
               children: [
+                SizedBox(
+                  height: 20,
+                ),
                 TaskTile(
                   taskTitle: task.title,
                   isChecked: task.isCompleted,
