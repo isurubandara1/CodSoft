@@ -36,8 +36,8 @@ class TaskList extends StatelessWidget {
                 ),
                 if (index < taskData.tasks.length - 1)
                   Container(
-                    height: 10,
-                    color: Colors.grey[200],
+                    height: 2,
+                    color: Colors.orange,
                   ),
               ],
             );
