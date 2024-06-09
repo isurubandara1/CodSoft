@@ -101,7 +101,7 @@ class TaskScreen extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) => Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
@@ -109,11 +109,11 @@ class TaskScreen extends StatelessWidget {
                           onChanged: (newText) {
                             newTaskTitle = newText;
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: 'New Task',
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         ElevatedButton(
                           onPressed: () {
                             if (newTaskTitle.isNotEmpty) {
