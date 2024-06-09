@@ -72,8 +72,8 @@ class TaskScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.star),
-              title: Text('Rate App'),
+              leading: const Icon(Icons.star),
+              title: const Text('Rate App'),
               onTap: () {
                 // Navigate to the about screen
               },
