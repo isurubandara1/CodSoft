@@ -137,7 +137,7 @@ class TaskScreen extends StatelessWidget {
                     ),
                   ));
         },
-        child: Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
     );
   }

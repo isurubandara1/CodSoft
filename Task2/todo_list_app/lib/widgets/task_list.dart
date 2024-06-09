@@ -15,7 +15,7 @@ class TaskList extends StatelessWidget {
             final task = taskData.tasks[index];
             return Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TaskTile(
