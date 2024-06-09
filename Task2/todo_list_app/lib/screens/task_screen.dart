@@ -41,7 +41,7 @@ class TaskScreen extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               child: Center(
                 child: Text(
                   'Task Manager',
