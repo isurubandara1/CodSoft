@@ -65,8 +65,8 @@ class TaskScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.get_app),
-              title: Text('More Apps'),
+              leading: const Icon(Icons.get_app),
+              title: const Text('More Apps'),
               onTap: () {
                 // Navigate to the settings screen
               },
