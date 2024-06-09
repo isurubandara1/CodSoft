@@ -23,11 +23,11 @@ class EditTaskScreen extends StatelessWidget {
               editedTaskTitle = newText;
             },
             controller: TextEditingController()..text = task.title,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Edit Task',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
               if (editedTaskTitle.isNotEmpty) {
