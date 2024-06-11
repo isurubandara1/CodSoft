@@ -16,12 +16,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    fetchMeals();
+    fetchRandomMeals();
   }
 
-  void fetchMeals() async {
+  void fetchRandomMeals() async {
     try {
-      final data = await apiService.listMealsByFirstLetter('a');
+      final data = await apiService.getRandomMeals();
       setState(() {
         meals =
             (data['meals'] as List).map((json) => Meal.fromJson(json)).toList();
@@ -69,13 +69,14 @@ class _HomePageState extends State<HomePage> {
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+              ),
               itemCount: meals.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Image.network(meals[index].thumbnail),
-                  title: Text(meals[index].name),
-                  subtitle: Text(meals[index].category),
+                return GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
@@ -85,6 +86,28 @@ class _HomePageState extends State<HomePage> {
                       ),
                     );
                   },
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: Image.network(
+                            meals[index].thumbnail,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            meals[index].name,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),

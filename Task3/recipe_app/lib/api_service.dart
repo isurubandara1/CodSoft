@@ -48,4 +48,13 @@ class ApiService {
       throw Exception('Failed to load categories');
     }
   }
+
+  Future<Map<String, dynamic>> getRandomMeals() async {
+    final response = await http.get(Uri.parse('$baseUrl/randomselection.php'));
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load random meals');
+    }
+  }
 }
