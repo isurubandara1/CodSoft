@@ -22,7 +22,22 @@ class TransactionList extends StatelessWidget {
             title: Text(tx.title),
             subtitle: Text(
                 '\$${tx.amount.toStringAsFixed(2)} - ${tx.category.toString().split('.').last}'),
-            trailing: Text(DateFormat.yMMMd().format(tx.date)),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(DateFormat.yMMMd().format(tx.date)),
+                IconButton(
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.brown,
+                  ),
+                  onPressed: () {
+                    Provider.of<TransactionProvider>(context, listen: false)
+                        .deleteTransaction(tx.id);
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },

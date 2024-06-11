@@ -28,10 +28,27 @@ class _BudgetScreenState extends State<BudgetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Set Monthly Budget'),
+        backgroundColor: Colors.blue,
+        title: const Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            'Add Your Budget',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        leading: const Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: BackButton(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -40,9 +57,30 @@ class _BudgetScreenState extends State<BudgetScreen> {
               decoration: InputDecoration(labelText: 'Monthly Budget'),
               keyboardType: TextInputType.number,
             ),
+            SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               onPressed: _submitBudget,
               child: Text('Set Budget'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                onPrimary: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+              child: Image.asset(
+                'assets/images/Budget.png',
+                height: 300,
+                width: 500,
+              ),
             ),
           ],
         ),

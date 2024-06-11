@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/transaction_provider.dart';
 import '../widgets/transaction_list.dart';
+import '../widgets/drawer_widget.dart';
 import 'add_transaction_screen.dart';
 import 'category_screen.dart';
 import 'budget_screen.dart';
+import '../providers/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final transactionProvider = Provider.of<TransactionProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     // Calculate remaining budget
     double remainingBudget =
@@ -17,16 +20,16 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(90.0),
         child: AppBar(
           backgroundColor: Colors.blue,
           title: Padding(
             padding: const EdgeInsets.only(top: 8),
             child: Text(
-              'Personal Expense \nTracker',
+              'Personal Expense Tracker',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -35,38 +38,30 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10),
               child: IconButton(
                 icon: Icon(
-                  Icons.category,
+                  themeProvider.themeMode == ThemeMode.light
+                      ? Icons.dark_mode
+                      : Icons.light_mode,
                   size: 40,
+                  color: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed(CategoryScreen.routeName);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  size: 40,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed(BudgetScreen.routeName);
+                  themeProvider.toggleTheme();
                 },
               ),
             ),
           ],
         ),
       ),
+      drawer: AppDrawer(),
       body: Column(
         children: [
           Card(
-            color: Colors.amber,
             margin: EdgeInsets.all(20),
             child: Padding(
               padding:
                   EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Monthly Budget: \$${transactionProvider.monthlyBudget.toStringAsFixed(2)}',
@@ -95,29 +90,73 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: TransactionList(),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: TransactionList(),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  child: Text(
+                    "Add \nMonthly Budget",
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(BudgetScreen.routeName);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                ),
+                ElevatedButton(
+                  child: Text(
+                    "Add \nTransactions",
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
+                  onPressed: transactionProvider.monthlyBudget == 0.0
+                      ? () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Firstly enter Monthly Budget'),
+                            ),
+                          );
+                        }
+                      : () {
+                          Navigator.of(context)
+                              .pushNamed(AddTransactionScreen.routeName);
+                        },
+                  style: ElevatedButton.styleFrom(
+                    primary: transactionProvider.monthlyBudget == 0.0
+                        ? Colors.grey
+                        : Colors.blue,
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
         ],
-      ),
-      floatingActionButton: ElevatedButton(
-        child: Text(
-          "Add \nTransactions",
-          style: TextStyle(fontSize: 12),
-          textAlign: TextAlign.center,
-        ),
-        onPressed: () {
-          Navigator.of(context).pushNamed(AddTransactionScreen.routeName);
-        },
-        style: ElevatedButton.styleFrom(
-          elevation: 15,
-          primary: Colors.blue,
-          onPrimary: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-            side: BorderSide(color: Colors.grey, width: 2),
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        ),
       ),
     );
   }
