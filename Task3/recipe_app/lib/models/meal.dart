@@ -22,14 +22,16 @@ class Meal {
   factory Meal.fromJson(Map<String, dynamic> json) {
     List<String> ingredients = [];
     List<String> measures = [];
+
     for (int i = 1; i <= 20; i++) {
-      String ingredient = json['strIngredient$i'];
-      String measure = json['strMeasure$i'];
-      if (ingredient.isNotEmpty) {
+      final ingredient = json['strIngredient$i'];
+      final measure = json['strMeasure$i'];
+      if (ingredient != null && ingredient.isNotEmpty) {
         ingredients.add(ingredient);
-        measures.add(measure);
+        measures.add(measure ?? '');
       }
     }
+
     return Meal(
       id: json['idMeal'],
       name: json['strMeal'],
