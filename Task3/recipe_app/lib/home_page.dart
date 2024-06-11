@@ -38,10 +38,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recipe App'),
+        backgroundColor: Colors.orange,
+        title: Text(
+          'Recipe App',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+              size: 35,
+            ),
             onPressed: () {
               showSearch(
                   context: context, delegate: MealSearchDelegate(apiService));
@@ -51,7 +64,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Image.asset('assets/images/Home.jpg', width: 200, fit: BoxFit.cover)
+          Image.asset('assets/images/Home.jpg',
+              width: double.infinity, height: 300, fit: BoxFit.fill)
         ],
       ),
     );
