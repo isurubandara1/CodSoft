@@ -62,11 +62,48 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Image.asset('assets/images/Home.jpg',
-              width: double.infinity, height: 300, fit: BoxFit.fill)
-        ],
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+              ),
+              child: Text(
+                'Recipe App Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('About'),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/Home.jpg',
+              width: double.infinity,
+              height: 800,
+              fit: BoxFit.fill,
+            ),
+          ],
+        ),
       ),
     );
   }
