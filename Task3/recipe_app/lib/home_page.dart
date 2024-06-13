@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage>
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.orange, // Button color
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 80,
+                                    horizontal: 50,
                                     vertical: 11), // Button padding
                                 textStyle: TextStyle(
                                     fontSize: 22,
@@ -168,11 +168,13 @@ class _HomePageState extends State<HomePage>
                               ),
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Text(
-                                    'Go ahead',
-                                    style: TextStyle(color: Colors.white),
+                                  Image.asset(
+                                    'assets/images/cookerman.png',
+                                    fit: BoxFit.cover,
+                                    width: 55,
+                                    height: 45,
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
