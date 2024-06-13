@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage>
     fetchRandomMeals();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 800),
+      duration: Duration(seconds: 1),
     );
 
     // Create a Tween animation for the button movement
@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage>
                     child: Opacity(
                       opacity: 1,
                       child: Text(
-                        'Unleash your inner chef with [App Name]! Explore a world of delicious recipes for every taste bud. From quick weeknight meals to adventurous global cuisine, we have something for everyone. Find dishes that fit your dietary needs, with options for vegan, vegetarian, gluten-free, and paleo eaters. Download [App Name] today - free and packed with features to turn you into a kitchen rockstar!',
+                        'Unleash your inner chef with Easy Coookind App! Explore a world of delicious recipes for every taste bud. From quick weeknight meals to adventurous global cuisine, we have something for everyone. Find dishes that fit your dietary needs, with options for vegan, vegetarian, gluten-free, and paleo eaters.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage>
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: AnimatedBuilder(
@@ -170,10 +170,37 @@ class _HomePageState extends State<HomePage>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(
+                                            255, 235, 90, 23), // Default color
+                                      ),
+                                      children: <TextSpan>[
+                                        TextSpan(
+                                          text: '𝐆',
+                                          style: TextStyle(
+                                            fontSize: 27,
+                                            color: Color.fromARGB(
+                                                255, 235, 90, 23),
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: '𝐞𝐭 𝐒𝐭𝐚𝐫𝐭',
+                                          style: TextStyle(
+                                            color: Color.fromARGB(255, 255, 255,
+                                                255), // Color for the rest of the text
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                   Image.asset(
                                     'assets/images/cookerman.png',
-                                    fit: BoxFit.cover,
-                                    width: 55,
+                                    fit: BoxFit.fill,
+                                    width: 80,
                                     height: 45,
                                   ),
                                   Container(
