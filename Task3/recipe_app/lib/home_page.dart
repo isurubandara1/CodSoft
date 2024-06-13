@@ -9,15 +9,37 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   final ApiService apiService = ApiService();
   List<Meal> meals = [];
   bool isLoading = true;
+
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
     fetchRandomMeals();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 800),
+    );
+
+    // Create a Tween animation for the button movement
+    _animation = Tween<double>(begin: 0, end: 10).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+
+    // Start animation
+    _animationController.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   void fetchRandomMeals() async {
@@ -40,12 +62,27 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Text(
-          'Recipe App',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
+        title: Text.rich(
+          TextSpan(
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                text: '𝐄𝐚𝐬𝐲',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 235, 90, 23),
+                  fontSize: 36,
+                ),
+              ),
+              TextSpan(
+                text: ' 𝐂𝐨𝐨𝐤𝐢𝐧𝐠',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ),
         centerTitle: true,
@@ -58,7 +95,9 @@ class _HomePageState extends State<HomePage> {
             ),
             onPressed: () {
               showSearch(
-                  context: context, delegate: MealSearchDelegate(apiService));
+                context: context,
+                delegate: MealSearchDelegate(apiService),
+              );
             },
           ),
         ],
@@ -103,37 +142,56 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.orange, // Button color
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 80, vertical: 11), // Button padding
-                        textStyle: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold), // Text style
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Go ahead',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Container(
+                    child: AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(0, _animation.value),
+                          child: Container(
                             decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
+                              border: Border.all(
+                                  color: Colors.white,
+                                  width: 3), // White border
+                              borderRadius: BorderRadius.circular(
+                                  35), // Adjust border radius as needed
                             ),
-                            padding:
-                                EdgeInsets.all(10), // Adjust padding as needed
-                            child: Icon(
-                              Icons.chevron_right,
-                              color: Colors.black,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.orange, // Button color
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 80,
+                                    vertical: 11), // Button padding
+                                textStyle: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold), // Text style
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Go ahead',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color.fromARGB(255, 235, 90, 23),
+                                    ),
+                                    padding: EdgeInsets.all(
+                                        10), // Adjust padding as needed
+                                    child: Icon(
+                                      Icons.chevron_right,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                   ),
                   SizedBox(height: 16), // Space below button
