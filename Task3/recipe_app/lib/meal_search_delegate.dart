@@ -40,32 +40,42 @@ class MealSearchDelegate extends SearchDelegate {
           return ListView.builder(
             itemCount: results.length,
             itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Image.network(
-                      results[index].thumbnail,
-                      height: 100, // Adjust the height of the image
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(
-                      results[index].name,
-                      style: TextStyle(
-                        fontSize: 18, // Adjust the font size
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              RecipeDetailPage(meal: results[index]),
+              return Container(
+                height: 120, // Adjust the height of the ListTile
+                padding: EdgeInsets.all(8), // Padding around the ListTile
+                child: Center(
+                  child: Card(
+                    color: Colors.orange, // Set background color to orange
+                    child: ListTile(
+                      contentPadding:
+                          EdgeInsets.all(8), // Padding inside the ListTile
+                      leading: ClipOval(
+                        child: Image.network(
+                          results[index].thumbnail,
+                          width: 80, // Set width to maintain aspect ratio
+                          height: 80, // Set height to maintain aspect ratio
+                          fit: BoxFit.cover,
                         ),
-                      );
-                    },
+                      ),
+                      title: Text(
+                        results[index].name,
+                        style: TextStyle(
+                          fontSize: 18, // Adjust the font size
+                          color: Colors.white, // Set text color to white
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                RecipeDetailPage(meal: results[index]),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  Divider(), // Add a divider below each ListTile
-                ],
+                ),
               );
             },
           );
@@ -93,27 +103,37 @@ class MealSearchDelegate extends SearchDelegate {
           return ListView.builder(
             itemCount: suggestions.length,
             itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Image.network(
-                      suggestions[index].thumbnail,
-                      height: 100, // Adjust the height of the image
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(
-                      suggestions[index].name,
-                      style: TextStyle(
-                        fontSize: 18, // Adjust the font size
+              return Container(
+                height: 100, // Adjust the height of the ListTile
+                padding: EdgeInsets.all(8), // Padding around the ListTile
+                child: Center(
+                  child: Card(
+                    color: Colors.orange, // Set background color to orange
+                    child: ListTile(
+                      contentPadding:
+                          EdgeInsets.all(8), // Padding inside the ListTile
+                      leading: ClipOval(
+                        child: Image.network(
+                          suggestions[index].thumbnail,
+                          width: 80, // Set width to maintain aspect ratio
+                          height: 80, // Set height to maintain aspect ratio
+                          fit: BoxFit.cover,
+                        ),
                       ),
+                      title: Text(
+                        suggestions[index].name,
+                        style: TextStyle(
+                          fontSize: 18, // Adjust the font size
+                          color: Colors.white, // Set text color to white
+                        ),
+                      ),
+                      onTap: () {
+                        query = suggestions[index].name;
+                        showResults(context);
+                      },
                     ),
-                    onTap: () {
-                      query = suggestions[index].name;
-                      showResults(context);
-                    },
                   ),
-                  Divider(), // Add a divider below each ListTile
-                ],
+                ),
               );
             },
           );

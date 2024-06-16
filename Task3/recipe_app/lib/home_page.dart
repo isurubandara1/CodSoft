@@ -156,7 +156,12 @@ class _HomePageState extends State<HomePage>
                                   35), // Adjust border radius as needed
                             ),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showSearch(
+                                  context: context,
+                                  delegate: MealSearchDelegate(apiService),
+                                );
+                              },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.orange, // Button color
                                 padding: EdgeInsets.symmetric(
