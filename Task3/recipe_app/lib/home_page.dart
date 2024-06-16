@@ -109,8 +109,8 @@ class _HomePageState extends State<HomePage>
           children: [
             // Background image with opacity
             Positioned.fill(
-              child: Container(
-                color: Colors.black.withOpacity(0.2),
+              child: Opacity(
+                opacity: 0.9,
                 child: Image.asset(
                   'assets/images/Home.jpg',
                   fit: BoxFit.fitHeight,
