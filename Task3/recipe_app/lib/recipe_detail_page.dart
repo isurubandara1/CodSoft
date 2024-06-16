@@ -37,91 +37,98 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(""),
+          title: Text(
+            widget.meal.name + ' Recipe',
+            style: TextStyle(fontSize: 30),
+          ),
+          backgroundColor: Color.fromARGB(255, 243, 82, 33),
         ),
-        body: Padding(
-          padding:
-              const EdgeInsets.only(left: 15, right: 15, bottom: 5, top: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AnimatedBuilder(
-                animation: _animation,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: _animation.value,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.network(
-                        widget.meal.thumbnail,
-                        width: imageWidth,
-                        height: 250,
-                        fit: BoxFit.fill,
+        body: Container(
+          color: Colors.amber,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, bottom: 5, top: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AnimatedBuilder(
+                  animation: _animation,
+                  builder: (context, child) {
+                    return Transform.rotate(
+                      angle: _animation.value,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          widget.meal.thumbnail,
+                          width: imageWidth,
+                          height: 250,
+                          fit: BoxFit.fill,
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
-              SizedBox(height: 15.0),
-              Container(
-                width: imageWidth,
-                child: ClipOval(
-                  child: Container(
-                    color: Color.fromARGB(255, 243, 82, 33),
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      widget.meal.name,
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    );
+                  },
+                ),
+                SizedBox(height: 15.0),
+                Container(
+                  width: imageWidth,
+                  child: ClipOval(
+                    child: Container(
+                      color: Color.fromARGB(255, 243, 82, 33),
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.meal.name,
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 8.0),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Category: ${widget.meal.category}',
-                        style: TextStyle(fontSize: 20.0),
-                      ),
-                      Text(
-                        'Area: ${widget.meal.area}',
-                        style: TextStyle(fontSize: 20.0),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        'Ingredients:',
-                        style: TextStyle(
-                            fontSize: 30.0, fontWeight: FontWeight.bold),
-                      ),
-                      for (int i = 0; i < widget.meal.ingredients.length; i++)
+                SizedBox(height: 8.0),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                          '${widget.meal.ingredients[i]} - ${widget.meal.measures[i]}',
+                          'Category: ${widget.meal.category}',
                           style: TextStyle(fontSize: 20.0),
                         ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        'Instructions:',
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        widget.meal.instructions,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(fontSize: 20.0),
-                      ),
-                    ],
+                        Text(
+                          'Area: ${widget.meal.area}',
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          'Ingredients:',
+                          style: TextStyle(
+                              fontSize: 30.0, fontWeight: FontWeight.bold),
+                        ),
+                        for (int i = 0; i < widget.meal.ingredients.length; i++)
+                          Text(
+                            '${widget.meal.ingredients[i]} - ${widget.meal.measures[i]}',
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          'Instructions:',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          widget.meal.instructions,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ));
   }
