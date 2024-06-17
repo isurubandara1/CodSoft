@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/api_service.dart';
 import 'package:recipe_app/home_page.dart';
+import 'package:recipe_app/meal_search_delegate.dart';
 
 class DrawerPage extends StatelessWidget {
+  final ApiService apiService = ApiService();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -48,10 +51,15 @@ class DrawerPage extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.search),
             title: const Text('Search'),
-            onTap: () {},
+            onTap: () {
+              showSearch(
+                context: context,
+                delegate: MealSearchDelegate(apiService),
+              );
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.account_box_outlined),
+            leading: const Icon(Icons.info),
             title: const Text('About'),
             onTap: () {
               // Navigate to the home screen

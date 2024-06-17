@@ -39,7 +39,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
         appBar: AppBar(
           title: Text(
             widget.meal.name + ' Recipe',
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 25, color: Colors.white),
           ),
           backgroundColor: Color.fromARGB(255, 243, 82, 33),
         ),
