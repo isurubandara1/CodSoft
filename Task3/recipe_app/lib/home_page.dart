@@ -104,10 +104,10 @@ class _HomePageState extends State<HomePage>
       ),
       drawer: DrawerPage(), // Use the DrawerPage widget here
       body: Container(
+        color: Colors.black,
         height: double.infinity,
         child: Stack(
           children: [
-            // Background image with opacity
             Positioned.fill(
               child: Opacity(
                 opacity: 0.9,
