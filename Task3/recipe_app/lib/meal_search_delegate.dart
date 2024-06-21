@@ -41,6 +41,7 @@ class MealSearchDelegate extends SearchDelegate {
             itemCount: results.length,
             itemBuilder: (context, index) {
               return Container(
+                color: const Color.fromARGB(255, 233, 204, 116),
                 height: 100, // Adjust the height of the ListTile
                 padding: EdgeInsets.all(8), // Padding around the ListTile
                 child: Center(
