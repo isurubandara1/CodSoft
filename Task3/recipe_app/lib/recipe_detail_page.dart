@@ -42,6 +42,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
             style: TextStyle(fontSize: 25, color: Colors.white),
           ),
           backgroundColor: Color.fromARGB(255, 243, 82, 33),
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         body: Container(
           color: Colors.amber,
