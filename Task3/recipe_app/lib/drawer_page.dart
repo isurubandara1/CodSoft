@@ -38,7 +38,13 @@ class DrawerPage extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.home),
-            title: const Text('Home'),
+            title: const Text(
+              'Home',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               Navigator.push(
                 context,
@@ -48,9 +54,18 @@ class DrawerPage extends StatelessWidget {
               );
             },
           ),
+          SizedBox(
+            height: 10,
+          ),
           ListTile(
             leading: const Icon(Icons.search),
-            title: const Text('Search'),
+            title: const Text(
+              'Search',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               showSearch(
                 context: context,
@@ -58,30 +73,66 @@ class DrawerPage extends StatelessWidget {
               );
             },
           ),
+          SizedBox(
+            height: 10,
+          ),
           ListTile(
             leading: const Icon(Icons.info),
-            title: const Text('About'),
+            title: const Text(
+              'About',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               // Navigate to the home screen
             },
+          ),
+          SizedBox(
+            height: 10,
           ),
           ListTile(
             leading: const Icon(Icons.share),
-            title: const Text('Share App'),
+            title: const Text(
+              'Share App',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               // Navigate to the home screen
             },
           ),
+          SizedBox(
+            height: 10,
+          ),
           ListTile(
             leading: const Icon(Icons.get_app),
-            title: const Text('More Apps'),
+            title: const Text(
+              'More Apps',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               // Navigate to the settings screen
             },
           ),
+          SizedBox(
+            height: 10,
+          ),
           ListTile(
             leading: const Icon(Icons.star),
-            title: const Text('Rate App'),
+            title: const Text(
+              'Rate App',
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold),
+            ),
             onTap: () {
               // Navigate to the about screen
             },
