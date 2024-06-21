@@ -21,7 +21,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 1))
-          ..repeat(reverse: true); // Repeating the animation
+          ..repeat(reverse: true); 
     _animation = Tween(begin: -0.1, end: 0.1).animate(_controller);
   }
 
