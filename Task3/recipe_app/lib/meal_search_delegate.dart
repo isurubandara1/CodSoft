@@ -41,7 +41,8 @@ class MealSearchDelegate extends SearchDelegate {
             itemCount: results.length,
             itemBuilder: (context, index) {
               return Container(
-                height: 120, // Adjust the height of the ListTile
+                color: const Color.fromARGB(255, 233, 204, 116),
+                height: 100, // Adjust the height of the ListTile
                 padding: EdgeInsets.all(8), // Padding around the ListTile
                 child: Center(
                   child: Card(
@@ -60,7 +61,7 @@ class MealSearchDelegate extends SearchDelegate {
                       title: Text(
                         results[index].name,
                         style: TextStyle(
-                          fontSize: 18, // Adjust the font size
+                          fontSize: 22, // Adjust the font size
                           color: Colors.white, // Set text color to white
                         ),
                       ),
@@ -123,7 +124,7 @@ class MealSearchDelegate extends SearchDelegate {
                       title: Text(
                         suggestions[index].name,
                         style: TextStyle(
-                          fontSize: 18, // Adjust the font size
+                          fontSize: 22, // Adjust the font size
                           color: Colors.white, // Set text color to white
                         ),
                       ),

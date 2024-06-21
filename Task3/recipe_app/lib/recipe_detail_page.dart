@@ -21,7 +21,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: Duration(seconds: 1))
-          ..repeat(reverse: true); // Repeating the animation
+          ..repeat(reverse: true); 
     _animation = Tween(begin: -0.1, end: 0.1).animate(_controller);
   }
 
@@ -42,6 +42,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
             style: TextStyle(fontSize: 25, color: Colors.white),
           ),
           backgroundColor: Color.fromARGB(255, 243, 82, 33),
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         body: Container(
           color: Colors.amber,
@@ -95,11 +96,11 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                       children: [
                         Text(
                           'Category: ${widget.meal.category}',
-                          style: TextStyle(fontSize: 20.0),
+                          style: TextStyle(fontSize: 22.0),
                         ),
                         Text(
                           'Area: ${widget.meal.area}',
-                          style: TextStyle(fontSize: 20.0),
+                          style: TextStyle(fontSize: 22.0),
                         ),
                         SizedBox(height: 10.0),
                         Text(
@@ -110,7 +111,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                         for (int i = 0; i < widget.meal.ingredients.length; i++)
                           Text(
                             '${widget.meal.ingredients[i]} - ${widget.meal.measures[i]}',
-                            style: TextStyle(fontSize: 20.0),
+                            style: TextStyle(fontSize: 22.0),
                           ),
                         SizedBox(height: 8.0),
                         Text(
@@ -121,7 +122,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                         Text(
                           widget.meal.instructions,
                           textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 20.0),
+                          style: TextStyle(fontSize: 22.0),
                         ),
                       ],
                     ),
