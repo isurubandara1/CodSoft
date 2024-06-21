@@ -123,9 +123,9 @@ class _HomePageState extends State<HomePage>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.18),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Opacity(
                       opacity: 1,
                       child: Text(
@@ -133,13 +133,13 @@ class _HomePageState extends State<HomePage>
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.2),
+                  SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.only(left: 10, right: 10),
                     child: AnimatedBuilder(
