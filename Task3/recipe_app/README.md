@@ -3,8 +3,10 @@
 A new Flutter project designed to elevate your culinary adventures. With over 500+ searchable recipes categorized by country, this app is your ultimate kitchen companion.
 
 
+![Untitled image](https://github.com/isurubandara1/CODSOFT/assets/111081151/d1ea4b25-6985-45ea-9583-9f2ec41b11e5)
 
-### Key Features:
+
+## Key Features:
 🍲 **Extensive Recipe Collection**: Access a vast library of 500+ recipes from around the world, with detailed ingredients and step-by-step instructions.
 
 🔍 **Advanced Search Functionality**: Quickly find recipes by name or ingredients, ensuring you can always discover something new and exciting to cook.
