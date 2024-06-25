@@ -25,4 +25,6 @@ A new Flutter project designed to elevate your culinary adventures. With over 50
 - **Ease of Use**: Simplified search and categorization make finding the perfect recipe straightforward.
 - **Cultural Exploration**: Expand your culinary horizons by exploring dishes from various countries.
 
+### 🔷 Linkdin demo https://www.linkedin.com/feed/update/urn:li:activity:7211083495282987010/?originTrackingId=qNzWDW7aQeO6rsX91l8%2Bzg%3D%3D
+
 
